@@ -49,20 +49,23 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 // Rutas del backend
+
 app.use("/api", usersRoutes);
 app.use("/api", commentsRoutes);
 app.use("/api", newsRoutes);
 app.use('/api/images', express.static('uploads'));
 
-const port = process.env.API_PORT || 3977;
+const server = http.createServer(app);
+
+const port = process.env.API_PORT;
 
 app.get("/api/server-count", (req, res) => {
   const serverCount = client.guilds.cache.size;
   res.json({ serverCount});
 });
-
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
 
 
