@@ -59,11 +59,15 @@ const server = http.createServer(app);
 
 const port = process.env.API_PORT;
 
+app.get("/", (req, res) => {
+  res.status(200).send({ msg: "hola" });
+});
+
 app.get("/api/server-count", (req, res) => {
   const serverCount = client.guilds.cache.size;
   res.json({ serverCount});
 });
-server.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
