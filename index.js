@@ -62,6 +62,4 @@ app.get("/api/server-count", (req, res) => {
   const serverCount = client.guilds.cache.size;
   res.json({ serverCount});
 });
-server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+
