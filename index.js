@@ -54,12 +54,15 @@ app.use("/api", commentsRoutes);
 app.use("/api", newsRoutes);
 app.use('/api/images', express.static('uploads'));
 
-const server = http.createServer(app);
-
-const port = process.env.API_PORT;
+const port = process.env.API_PORT || 3977;
 
 app.get("/api/server-count", (req, res) => {
   const serverCount = client.guilds.cache.size;
   res.json({ serverCount});
 });
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
 
