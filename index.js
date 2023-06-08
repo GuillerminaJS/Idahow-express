@@ -57,7 +57,7 @@ app.use('/api/images', express.static('uploads'));
 
 const server = http.createServer(app);
 
-const port = process.env.API_PORT;
+const PORT = process.env.PORT || 7604;
 
 app.get("/", (req, res) => {
   res.status(200).send({ msg: "hola" });
@@ -67,8 +67,8 @@ app.get("/api/server-count", (req, res) => {
   const serverCount = client.guilds.cache.size;
   res.json({ serverCount});
 });
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 
